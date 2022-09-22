@@ -35,9 +35,9 @@ export const Home: FC = () => {
   return (
     <>
       {!message && !error && (
-        <a className={classes.link} href="#" onClick={() => queryBackend()}>
+        <Link className={classes.link} to="#" onClick={() => queryBackend()}>
           Click to make request to backend
-        </a>
+        </Link>
       )}
       {message && (
         <p>
@@ -67,12 +67,12 @@ export const Home: FC = () => {
         </a>
       ) : (
         <>
-          <a className={classes.link} href="/login">
+          <Link className={classes.link} to="/login">
             Login
-          </a>
-          <a className={classes.link} href="/signup">
+          </Link>
+          <Link className={classes.link} to="/signup">
             Sign Up
-          </a>
+          </Link>
         </>
       )}
 

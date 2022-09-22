@@ -3,8 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Home, Login, JobDetail, AddInfo, Position } from './views';
-import { Admin } from './admin';
+import { Home, Login, JobDetail, AddInfo, Position, SignUp } from './views';
 import { logout } from './utils/auth';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,28 +27,23 @@ export const Routes: FC = () => {
   const history = useHistory();
 
   return (
-    <Switch>
-      <Route path="/admin">
-        <Admin />
-      </Route>
-
-      <div className={classes.app}>
-        <header className={classes.header}>
-          <Route path="/login" component={Login} />
-          <Route
-            path="/logout"
-            render={() => {
-              logout();
-              history.push('/');
-              return null;
-            }}
-          />
-          <Route exact path="/" component={Home} />
-          <Route path="/jobDetail" component={JobDetail} />
-          <Route path="/addInfo" component={AddInfo} />
-          <Route path="/position" component={Position} />
-        </header>
-      </div>
-    </Switch>
+    <div className={classes.app}>
+      <header className={classes.header}>
+        <Route path="/login" component={Login} />
+        <Route
+          path="/logout"
+          render={() => {
+            logout();
+            history.push('/');
+            return null;
+          }}
+        />
+        <Route path="/signup" component={SignUp} />
+        <Route exact path="/" component={Home} />
+        <Route path="/jobDetail" component={JobDetail} />
+        <Route path="/addInfo" component={AddInfo} />
+        <Route path="/position" component={Position} />
+      </header>
+    </div>
   );
 };
